@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>今天是{{days}}</h2>
+        <input type="text" placeholder="按下回车输入" @keyup.enter="showInfo">
+        <input type="text" placeholder="按下esc退出" @keyup.esc="showInfo">
+        <input type="text" placeholder="按下delete和删除输入" @keyup.delete="showInfo">
+        <input type="text" placeholder="按下tab输入" @keydown.tab="showInfo">
+        <input type="text" placeholder="按下huiche输入" @keydown.huiche="showInfo">
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false
+    // 自定义键名
+    Vue.config.keyCodes.huiche = 13 // 定义了一个别名按键
+
+    new Vue({
+        el: "#root",
+        data: {
+            days: "2023.03.23"
+        },
+
+        methods: {
+            showInfo(e) {
+                console.log(e.target.value);
+            },
+        }
+    })
+</script>
+
+</html>
